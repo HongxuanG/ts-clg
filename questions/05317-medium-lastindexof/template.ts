@@ -1,3 +1,10 @@
+type Subtract<A extends number, B extends number> = BuildArr<A> extends [
+  ...BuildArr<B>,
+  ...infer Rest
+]
+  ? Rest['length']
+  : never
+
 type BuildArr<
   Length extends number,
   Ele extends unknown = unknown,
