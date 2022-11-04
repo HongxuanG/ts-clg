@@ -9,7 +9,7 @@ type MyStringToUnion<S extends string> = S extends `${infer First}${infer Rest}`
  */
 type DropStringHandler<
   S,
-  R extends string
+  R extends string,
 > = S extends `${infer First}${infer Suf}`
   ? First extends R
     ? `${DropStringHandler<Suf, R>}`

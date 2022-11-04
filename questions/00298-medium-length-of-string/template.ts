@@ -4,8 +4,8 @@
 type StringToArray<S extends string> = S extends ''
   ? []
   : S extends `${infer A}${infer B}`
-  ? [A, ...StringToArray<B>]
-  : never
+    ? [A, ...StringToArray<B>]
+    : never
 // ['length']获得数组的长度
 type LengthOfString<S extends string> = StringToArray<S>['length']
 
@@ -17,7 +17,7 @@ type LengthOfString<S extends string> = StringToArray<S>['length']
  * */
 type LengthOfString1<
   S extends string,
-  CountArr extends unknown[] = []
+  CountArr extends unknown[] = [],
 > = S extends `${string}${infer Rest}`
   ? LengthOfString1<Rest, [...CountArr, unknown]>
   : CountArr['length']

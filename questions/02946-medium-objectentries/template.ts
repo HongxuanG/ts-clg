@@ -1,6 +1,6 @@
 type ObjectEntriesHandler<
   T extends Record<string, any>,
-  K extends keyof T = keyof T
+  K extends keyof T = keyof T,
 > = K extends K ? [K, T[K]] : never
 type ObjectEntries<T extends Record<string, any>> = ObjectEntriesHandler<
   Required<T>

@@ -1,6 +1,6 @@
 type Unique<T extends unknown[], S extends any[] = []> = T extends [
   infer First,
-  ...infer Rest
+  ...infer Rest,
 ]
   ? IsCover<First, S> extends true
     ? Unique<Rest, S>

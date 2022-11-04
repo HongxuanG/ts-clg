@@ -2,7 +2,7 @@ type FibonacciLoop<
   PrevArr extends unknown[],
   CurrentArr extends unknown[],
   IndexArr extends unknown[] = [],
-  Num extends number = 1
+  Num extends number = 1,
 > = IndexArr['length'] extends Num
   ? CurrentArr['length']
   : FibonacciLoop<

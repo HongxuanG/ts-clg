@@ -1,16 +1,16 @@
 type Split<
   S extends string,
   SEP extends string,
-  ResultArr extends unknown[] = []
+  ResultArr extends unknown[] = [],
 > = string extends S
   ? S[]
   : S extends `${infer First}${SEP}${infer Second}`
-  ? Split<Second, SEP, [...ResultArr, First]>
-  : S extends ''
-  ? SEP extends ''
-    ? ResultArr
-    : [S]
-  : [...ResultArr, S]
+    ? Split<Second, SEP, [...ResultArr, First]>
+    : S extends ''
+      ? SEP extends ''
+        ? ResultArr
+        : [S]
+      : [...ResultArr, S]
 
 /**
  * S extends `${infer First}${SEP}${infer Second}`

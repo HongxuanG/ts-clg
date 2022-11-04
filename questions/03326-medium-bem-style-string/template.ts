@@ -16,7 +16,7 @@ type tse = ArrayToUnion<[]>
 type BEM<
   B extends string,
   E extends string[],
-  M extends string[]
+  M extends string[],
 > = `${B}${ArrayToUnion<E, '__'>}${ArrayToUnion<M, '--'>}`
 
 // 理解了union的分布式条件类型就很容易解开

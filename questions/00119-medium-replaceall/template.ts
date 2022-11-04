@@ -1,12 +1,12 @@
 type ReplaceAll<
   S extends string,
   From extends string,
-  To extends string
+  To extends string,
 > = From extends ''
   ? S
   : S extends `${infer Prefix}${From}${infer Suffix}`
-  ? `${Prefix}${To}${ReplaceAll<Suffix, From, To>}`
-  : S
+    ? `${Prefix}${To}${ReplaceAll<Suffix, From, To>}`
+    : S
 
 // 解题过程
 // 递归、infer、Condistional Type、Template Literal Types

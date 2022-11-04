@@ -6,7 +6,7 @@ type equal<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
 
 type Includes<T extends readonly unknown[], U> = T extends [
   infer First,
-  ...infer Rest
+  ...infer Rest,
 ]
   ? equal<First, U> extends true
     ? true

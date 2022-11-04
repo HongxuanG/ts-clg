@@ -1,6 +1,6 @@
 type BinaryToDecimal<
   S extends string,
-  ResultCount extends unknown[] = []
+  ResultCount extends unknown[] = [],
 > = S extends `${infer First}${infer Rest}`
   ? First extends '0'
     ? BinaryToDecimal<Rest, [...ResultCount, ...ResultCount]>

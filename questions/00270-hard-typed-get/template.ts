@@ -1,6 +1,6 @@
 type Get<
   T extends Record<string, any>,
-  K extends string
+  K extends string,
 > = K extends `${infer First}.${infer Rest}`
   ? First extends keyof T
     ? Get<T[First], Rest>

@@ -2,7 +2,7 @@ type Zip<
   T extends any[] = [],
   U extends any[] = [],
   countArr extends unknown[] = [], // 循环次数+1
-  ResultArr extends unknown[] = [] // 储存中间结果
+  ResultArr extends unknown[] = [], // 储存中间结果
 > = countArr['length'] extends T['length'] | U['length']
   ? ResultArr
   : Zip<

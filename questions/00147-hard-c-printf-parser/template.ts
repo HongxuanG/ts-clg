@@ -10,7 +10,7 @@ type ControlsMap = {
 
 type ParsePrintFormat<
   S extends string,
-  ResultArr extends string[] = []
+  ResultArr extends string[] = [],
 > = S extends `${string}%${infer Letter}${infer Rest}`
   ? Letter extends keyof ControlsMap
     ? ParsePrintFormat<Rest, [...ResultArr, ControlsMap[Letter]]>

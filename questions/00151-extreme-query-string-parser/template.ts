@@ -26,15 +26,15 @@ type AddKeyAndValueToObj<T extends Record<string, any>, K extends string, V> = {
  */
 type ParseQueryString<
   S extends string,
-  ResultObj extends Record<string, any> = {}
+  ResultObj extends Record<string, any> = {},
 > = S extends ''
   ? ResultObj
   : S extends `${infer First}&${infer Rest}`
-  ? First extends `${infer Key}=${infer Value}`
-    ? ParseQueryString<Rest, AddKeyAndValueToObj<ResultObj, Key, Value>>
-    : First extends `${infer SingleKey}`
-    ? ParseQueryString<Rest, AddKeyAndValueToObj<ResultObj, SingleKey, true>>
-    : ParseQueryString<Rest, ResultObj>
-  : S extends `${infer K}=${infer V}`
-  ? AddKeyAndValueToObj<ResultObj, K, V>
-  : AddKeyAndValueToObj<ResultObj, S, true>
+    ? First extends `${infer Key}=${infer Value}`
+      ? ParseQueryString<Rest, AddKeyAndValueToObj<ResultObj, Key, Value>>
+      : First extends `${infer SingleKey}`
+        ? ParseQueryString<Rest, AddKeyAndValueToObj<ResultObj, SingleKey, true>>
+        : ParseQueryString<Rest, ResultObj>
+    : S extends `${infer K}=${infer V}`
+      ? AddKeyAndValueToObj<ResultObj, K, V>
+      : AddKeyAndValueToObj<ResultObj, S, true>

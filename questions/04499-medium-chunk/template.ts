@@ -13,7 +13,7 @@
  */
 type Splice<T extends unknown[], N extends number> = T extends [
   ...BuildArr<N>,
-  ...infer Rest
+  ...infer Rest,
 ]
   ? Rest
   : []
@@ -23,7 +23,7 @@ type Splice<T extends unknown[], N extends number> = T extends [
  */
 type MyNewSlice<T extends unknown[], N extends number> = T extends [
   ...infer Rest,
-  ...BuildArr<Subtract<T['length'], N>>
+  ...BuildArr<Subtract<T['length'], N>>,
 ]
   ? Rest
   : []
@@ -32,12 +32,12 @@ type Chunk<
   T extends any[] = [],
   N extends number = 1,
   countArr extends unknown[] = [],
-  ResultArr extends unknown[] = []
+  ResultArr extends unknown[] = [],
 > = T extends []
   ? ResultArr
   : countArr['length'] extends N
-  ? Chunk<Splice<T, N>, N, [], [...ResultArr, MyNewSlice<T, N>]>
-  : Chunk<T, N, [...countArr, unknown], ResultArr>
+    ? Chunk<Splice<T, N>, N, [], [...ResultArr, MyNewSlice<T, N>]>
+    : Chunk<T, N, [...countArr, unknown], ResultArr>
 
 // 数组长度比给定的长，切割数组最后一个放入Splited
 // 数组长度和给定长度相同，将数组放入Result 然后将切割的数组做新数组继续递归

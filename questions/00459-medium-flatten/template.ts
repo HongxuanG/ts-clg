@@ -2,10 +2,10 @@
 type Flatten<T> = T extends []
   ? []
   : T extends [infer A, ...infer B]
-  ? A extends any[]
-    ? Flatten<[...A, ...B]>
-    : [A, ...Flatten<B>]
-  : T
+    ? A extends any[]
+      ? Flatten<[...A, ...B]>
+      : [A, ...Flatten<B>]
+    : T
 
 /**
  * 解构展开 T   [infer A, ...infer B]
@@ -22,11 +22,10 @@ type sss = Flatten<[1, 2, [3, 4], [[[5]]]]>
 function myFlatten(arr: []) {
   let res: any[] = []
   arr.map((item) => {
-    if (Array.isArray(item)) {
+    if (Array.isArray(item))
       res = res.concat(myFlatten(item))
-    } else {
+    else
       res.push(item)
-    }
   })
   return res
 }

@@ -1,14 +1,14 @@
 type Subtract<A extends number, B extends number> = BuildArr<A> extends [
   ...BuildArr<B>,
-  ...infer Rest
+  ...infer Rest,
 ]
   ? Rest['length']
   : never
 
 type BuildArr<
   Length extends number,
-  Ele extends unknown = unknown,
-  Arr extends unknown[] = []
+  Ele = unknown,
+  Arr extends unknown[] = [],
 > = Arr['length'] extends Length ? Arr : BuildArr<Length, Ele, [...Arr, Ele]>
 
 type LastIndexOf<T extends unknown[], U extends number> = IndexOf<

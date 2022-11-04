@@ -17,20 +17,20 @@ type GetAllPossibles<T> = GetFirstTwo<Permutation1<T>>
 
 type createArray<
   N,
-  CountArr extends unknown[] = []
+  CountArr extends unknown[] = [],
 > = CountArr['length'] extends N
   ? CountArr
   : createArray<N, [...CountArr, unknown]>
 
 type AddTwoNumber<N1 extends number, N2 extends number> = [
   ...createArray<N1>,
-  ...createArray<N2>
+  ...createArray<N2>,
 ]['length']
 
 type TwoSumHandler<
   T extends number[],
   U extends number,
-  R = GetAllPossibles<T>
+  R = GetAllPossibles<T>,
 > = R extends R
   ? R extends [infer One, infer Two]
     ? AddTwoNumber<One & number, Two & number> extends U
@@ -40,7 +40,7 @@ type TwoSumHandler<
   : never
 
 type TwoSum<T extends number[], U extends number> = [
-  TwoSumHandler<T, U>
+  TwoSumHandler<T, U>,
 ] extends [never]
   ? false
   : true

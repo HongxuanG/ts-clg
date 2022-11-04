@@ -1,7 +1,7 @@
 type ReplaceKeys<
   U extends Record<string, any>,
   T,
-  Y extends Record<string, any>
+  Y extends Record<string, any>,
 > = U extends U
   ? {
       [key in keyof U]: key extends T

@@ -8,7 +8,7 @@ type isNumber<N> = N extends `${BaseNumber}${infer S}`
 // 递归通过数组计数的方式累加
 type ToNumber<
   S extends string,
-  CountArr extends unknown[] = []
+  CountArr extends unknown[] = [],
 > = isNumber<S> extends true
   ? S extends `${CountArr['length']}`
     ? CountArr['length']

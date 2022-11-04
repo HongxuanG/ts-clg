@@ -1,5 +1,5 @@
 type ArrayAndReadonlyArrayByPassArray<
-  T extends any[] | readonly any[] = any[]
+  T extends any[] | readonly any[] = any[],
 > = T | Readonly<T>
 type IsReadonlyArray<T> = T extends any[] ? false : true
 
@@ -12,14 +12,14 @@ type IsReadonlyArray<T> = T extends any[] ? false : true
 type Indexof<
   T extends ArrayAndReadonlyArrayByPassArray,
   K extends T[number],
-  CountArr extends unknown[] = []
+  CountArr extends unknown[] = [],
 > = T[CountArr['length']] extends K
   ? CountArr['length']
   : Indexof<T, K, [...CountArr, unknown]>
 
 type Enum<
   T extends ArrayAndReadonlyArrayByPassArray,
-  N extends boolean = false
+  N extends boolean = false,
 > = IsReadonlyArray<T> extends true
   ? {
       readonly [key in T[number] as Capitalize<key>]: N extends true

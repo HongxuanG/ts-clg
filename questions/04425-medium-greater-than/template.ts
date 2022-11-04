@@ -9,11 +9,11 @@
 type GreaterThan<
   T extends number,
   U extends number,
-  CountArr extends unknown[] = []
+  CountArr extends unknown[] = [],
 > = T extends U
   ? false
   : CountArr['length'] extends T
-  ? false
-  : CountArr['length'] extends U
-  ? true
-  : GreaterThan<T, U, [...CountArr, unknown]>
+    ? false
+    : CountArr['length'] extends U
+      ? true
+      : GreaterThan<T, U, [...CountArr, unknown]>

@@ -12,11 +12,11 @@ type Combination1<A extends string, B extends string> =
   | `${B}${A}`
 // 3 etc.
 type test1 = Combination1<'A' | 'B', 'C' | 'D'>
-//4.联合类型的合并，利用联合类型默认可拆解
+// 4.联合类型的合并，利用联合类型默认可拆解
 type UnionCombination<A extends string, B extends string = A> = A extends ''
   ? ''
   : A extends B
-  ? Combination1<A, UnionCombination<Exclude<B, A>>>
-  : never
-//5. 字符串合并
+    ? Combination1<A, UnionCombination<Exclude<B, A>>>
+    : never
+// 5. 字符串合并
 type AllCombinations<S extends string> = UnionCombination<StringToUnion1<S>>

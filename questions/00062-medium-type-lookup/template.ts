@@ -2,7 +2,7 @@
 type anyInferfaceWithType<T> = { type: T; [property: string]: any }
 type LookUp<
   U extends anyInferfaceWithType<U['type']>,
-  T extends U['type']
+  T extends U['type'],
 > = U extends anyInferfaceWithType<T> ? U : never
 
 // 所学知识

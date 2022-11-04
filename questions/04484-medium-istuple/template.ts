@@ -1,5 +1,5 @@
 type NotEqual<A, B> = (<T>() => T extends A ? true : false) extends <
-  T
+  T,
 >() => T extends B ? true : false
   ? false
   : true

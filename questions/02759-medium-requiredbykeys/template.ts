@@ -1,7 +1,7 @@
 type Copyy<T> = { [key in keyof T]: T[key] }
 type RequiredByKeys<
   T extends Record<string, any>,
-  K extends any = keyof T
+  K = keyof T,
 > = Copyy<
   {
     [key in keyof Pick<T, keyof T & K>]-?: T[key]

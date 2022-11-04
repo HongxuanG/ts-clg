@@ -3,6 +3,6 @@ type Format<T extends string> =
     ? letter extends 's'
       ? (x: string) => Format<suffix>
       : letter extends 'd'
-      ? (x: number) => Format<suffix>
-      : string
+        ? (x: number) => Format<suffix>
+        : string
     : string

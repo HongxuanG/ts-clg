@@ -1,6 +1,6 @@
 type JoinedReturnType<
   Delimiter extends string,
-  Array extends unknown[] = []
+  Array extends unknown[] = [],
 > = Array extends [infer First, ...infer Rest]
   ? Array['length'] extends 1
     ? `${First extends string ? First : ''}`

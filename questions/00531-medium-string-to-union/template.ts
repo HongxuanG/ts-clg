@@ -2,6 +2,6 @@
 type StringToUnion<T extends string> = T extends ''
   ? never
   : T extends `${infer A}${infer B}`
-  ? A | StringToUnion<B>
-  : never
+    ? A | StringToUnion<B>
+    : never
 // extends 里面也可以返回 联合类型

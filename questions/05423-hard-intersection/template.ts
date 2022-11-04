@@ -1,7 +1,7 @@
 // 嵌套的数组类型展开转成union类型，组成一个元素是union的数组
 type convertUnionArray<
   T extends unknown[],
-  ResultArr extends unknown[] = []
+  ResultArr extends unknown[] = [],
 > = T extends [infer First, ...infer Rest]
   ? First extends unknown[]
     ? convertUnionArray<Rest, [...ResultArr, First[number]]>
@@ -11,7 +11,7 @@ type convertUnionArray<
 // 交叉类型
 type Intersection<
   T extends any[],
-  Union = convertUnionArray<T>[0]
+  Union = convertUnionArray<T>[0],
 > = convertUnionArray<T> extends [infer First, ...infer Rest]
   ? Intersection<Rest, Extract<First, Union>>
   : Union

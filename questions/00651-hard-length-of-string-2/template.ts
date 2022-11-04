@@ -18,7 +18,7 @@
 
 type LengthOfString2<
   S extends string,
-  R extends unknown[] = []
+  R extends unknown[] = [],
 > = S extends `${string}${string}${string}${string}${string}${string}${string}${string}${string}${string}${infer Rest}`
   ? LengthOfString2<
       Rest,
@@ -33,9 +33,9 @@ type LengthOfString2<
         unknown,
         unknown,
         unknown,
-        unknown
+        unknown,
       ]
     >
   : S extends `${string}${infer Rest}`
-  ? LengthOfString2<Rest, [...R, unknown]>
-  : R['length']
+    ? LengthOfString2<Rest, [...R, unknown]>
+    : R['length']
